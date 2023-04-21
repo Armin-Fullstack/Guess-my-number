@@ -1,32 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
-  <title>Guess my number</title>
-</head>
-<body>
-  <div class="status">
-    <span class="secret-number">?</span>
-    <ul class="status-list">
-      <li class="status-link">
-        <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="status-svg">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-        </svg>
-        <p class="status-text">Your Score: <span class="status-score">80</span></p>
-      </li>
-      <li class="status-link">
-        <svg class="status-svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 2048 2048"><path fill="currentColor" d="m2029 1453l-557 558l-269-270l90-90l179 178l467-466l90 90zM1024 384v512h384v128H896V384h128zm-64 1408q16 0 32-1t32-2l114 114q-45 8-89 12t-89 5q-132 0-254-34t-230-97t-194-150t-150-195t-97-229T0 960q0-132 34-254t97-230t150-194t195-150t229-97T960 0q132 0 254 34t230 97t194 150t150 195t97 229t35 255q0 50-6 101l-168 169q46-133 46-270q0-115-30-221t-84-198t-130-169t-168-130t-199-84t-221-30q-115 0-221 30t-198 84t-169 130t-130 168t-84 199t-30 221q0 115 30 221t84 198t130 169t168 130t199 84t221 30z"/></svg>
-        <p class="status-text">Chances left: <span class="status-score">1</span></p>
-      </li>
-      <li class="status-link">
-        <svg class="status-svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path fill="currentColor" d="M256 25c-11.594 0-23 12.8-23 31s11.406 31 23 31s23-12.8 23-31s-11.406-31-23-31zm-103.951 2.975l-16.098 8.05c15.092 30.185 51.37 56.81 82.188 74.442L232.334 295H247V192h18v103h14.666l14.195-184.533c30.818-17.632 67.096-44.257 82.188-74.442l-16.098-8.05c-19.91 29.9-44.891 49.148-71.334 57.77C281.311 97.28 269.75 105 256 105c-13.75 0-25.31-7.72-32.617-19.256c-26.443-8.62-51.424-27.87-71.334-57.77zM169 313v96H25v78h462v-30H343V313H169z"/></svg>
-        <p class="status-text">Highest Score: <span class="status-score">150</span></p>
-      </li>
-    </ul>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+    <title>Guess my number</title>
+  </head>
+  <body>
+    <div class="status">
+      <span class="secret-number">?</span>
+      <ul class="status-list">
+        <li class="status-link">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+            />
+          </svg>
+          <p class="status-text">
+            Your Score: <span class="status-score">80</span>
+          </p>
+        </li>
+        <li class="status-link">
+          <svg
+            class="svg"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 2048 2048"
+          >
+            <path
+              fill="currentColor"
+              d="m2029 1453l-557 558l-269-270l90-90l179 178l467-466l90 90zM1024 384v512h384v128H896V384h128zm-64 1408q16 0 32-1t32-2l114 114q-45 8-89 12t-89 5q-132 0-254-34t-230-97t-194-150t-150-195t-97-229T0 960q0-132 34-254t97-230t150-194t195-150t229-97T960 0q132 0 254 34t230 97t194 150t150 195t97 229t35 255q0 50-6 101l-168 169q46-133 46-270q0-115-30-221t-84-198t-130-169t-168-130t-199-84t-221-30q-115 0-221 30t-198 84t-169 130t-130 168t-84 199t-30 221q0 115 30 221t84 198t130 169t168 130t199 84t221 30z"
+            />
+          </svg>
+          <p class="status-text">
+            Chances left: <span class="status-score">1</span>
+          </p>
+        </li>
+        <li class="status-link">
+          <svg
+            class="svg"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 512 512"
+          >
+            <path
+              fill="currentColor"
+              d="M256 25c-11.594 0-23 12.8-23 31s11.406 31 23 31s23-12.8 23-31s-11.406-31-23-31zm-103.951 2.975l-16.098 8.05c15.092 30.185 51.37 56.81 82.188 74.442L232.334 295H247V192h18v103h14.666l14.195-184.533c30.818-17.632 67.096-44.257 82.188-74.442l-16.098-8.05c-19.91 29.9-44.891 49.148-71.334 57.77C281.311 97.28 269.75 105 256 105c-13.75 0-25.31-7.72-32.617-19.256c-26.443-8.62-51.424-27.87-71.334-57.77zM169 313v96H25v78h462v-30H343V313H169z"
+            />
+          </svg>
+          <p class="status-text">
+            Highest Score: <span class="status-score">150</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div class="user-box">
+      <p class="game-start">!! Game is starting ... !!</p>
+      <p class="user-alert-text">Between (1-20)</p>
+      <input type="number" class="user-input" placeholder= "Enter your number" />
+      <div class="reset-check-container">
+        <button class="reset-button">
+          <svg
+            class="svg"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+            />
+          </svg>
+        </button>
+        <button class="check">
+          <svg class="diamond" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12 19.875q-.425 0-.825-.188t-.7-.537L2.825 10q-.375-.45-.45-1.05t.2-1.125L4.45 4.1q.275-.5.738-.8T6.224 3h11.55q.575 0 1.038.3t.737.8l1.875 3.725q.275.525.2 1.125t-.45 1.05l-7.65 9.15q-.3.35-.7.538t-.825.187ZM9.625 8h4.75l-1.5-3h-1.75l-1.5 3ZM11 16.675V10H5.45L11 16.675Zm2 0L18.55 10H13v6.675ZM16.6 8h2.65l-1.5-3H15.1l1.5 3ZM4.75 8H7.4l1.5-3H6.25l-1.5 3Z"/></svg>
+          <span>Check</span></button>
+      </div>
+    </div>
+  </body>
 </html>
