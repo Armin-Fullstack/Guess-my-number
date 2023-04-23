@@ -1,6 +1,6 @@
 // select check button
 const check = document.querySelector(".check")! as HTMLButtonElement;
-
+let chanceLeft = 20;
 // generate secret number
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 
@@ -20,13 +20,35 @@ const compareUserNumber = () => {
       document.querySelector(".game-start")! as HTMLParagraphElement
     ).textContent = "👏🏻 correct number!";
   } else if (userNumber > secretNumber) {
-    (
-      document.querySelector(".game-start")! as HTMLParagraphElement
-    ).textContent = "📈 Too high!";
+    if(chanceLeft > 1) {
+      (
+        document.querySelector(".game-start")! as HTMLParagraphElement
+      ).textContent = "📈 Too high!";
+      chanceLeft--;
+      (document.querySelector(".chance-left")! as HTMLSpanElement).textContent =
+        String(chanceLeft);
+        console.log(chanceLeft);
+    } else {
+      (
+        document.querySelector(".game-start")! as HTMLParagraphElement
+      ).textContent = "☹️ You lost the game";
+      (document.querySelector(".chance-left")! as HTMLSpanElement).textContent = String(0)
+    }
+    
   } else if (userNumber < secretNumber) {
-    (
-      document.querySelector(".game-start")! as HTMLParagraphElement
-    ).textContent = "📉 Too low!";
+    if(chanceLeft > 1) {
+      (
+        document.querySelector(".game-start")! as HTMLParagraphElement
+      ).textContent = "📉 Too low!";
+      chanceLeft--;
+      (document.querySelector(".chance-left")! as HTMLSpanElement).textContent =
+        String(chanceLeft);
+    } else {
+      (
+        document.querySelector(".game-start")! as HTMLParagraphElement
+      ).textContent = "☹️ You lost the game";
+      (document.querySelector(".chance-left")! as HTMLSpanElement).textContent = String(0)
+    }
   }
 };
 check.addEventListener("click", compareUserNumber);
