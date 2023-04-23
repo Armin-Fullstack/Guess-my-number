@@ -5,7 +5,7 @@ const reset = document.querySelector(".reset-button") ! as HTMLButtonElement
 
 let chanceLeft = 20;
 // generate secret number
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 // compare user number - function
 const compareUserNumber = () => {
@@ -26,6 +26,7 @@ const compareUserNumber = () => {
       "#60b347";
     (document.querySelector(".secret-number")! as HTMLSpanElement).textContent =
       String(secretNumber);
+      (document.querySelector(".status-score")! as HTMLSpanElement).textContent = String(chanceLeft)
   } else if (userNumber > secretNumber) {
     if (chanceLeft > 1) {
       (
@@ -59,4 +60,22 @@ const compareUserNumber = () => {
     }
   }
 };
+
+// reset game handler
+const resetHandler = () => {
+  (document.querySelector(".chance-left")! as HTMLSpanElement).textContent = String(20);
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  (document.querySelector(".status-score")! as HTMLSpanElement).textContent = String(0);
+    (document.querySelector(".game-start")! as HTMLParagraphElement
+  ).textContent = "!! Game is starting ... !!";
+  (document.querySelector(".secret-number")! as HTMLSpanElement).textContent = "?";
+  (
+  document.querySelector(".user-input")! as HTMLInputElement
+  ).value = "";
+  (document.querySelector("body")! as HTMLBodyElement).style.backgroundColor =
+  "rgba(100, 115, 110, 0.863)";
+}
+
+
 check.addEventListener("click", compareUserNumber);
+reset.addEventListener("click" , resetHandler)
