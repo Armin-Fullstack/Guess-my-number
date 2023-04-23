@@ -1,5 +1,8 @@
 // select check button
 const check = document.querySelector(".check")! as HTMLButtonElement;
+// select reset button
+const reset = document.querySelector(".reset-button") ! as HTMLButtonElement
+
 let chanceLeft = 20;
 // generate secret number
 const secretNumber = Math.trunc(Math.random() * 20) + 1;

@@ -1,6 +1,8 @@
 "use strict";
 // select check button
 const check = document.querySelector(".check");
+// select reset button
+const reset = document.querySelector(".reset-button");
 let chanceLeft = 20;
 // generate secret number
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
