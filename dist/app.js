@@ -14,6 +14,10 @@ const compareUserNumber = () => {
     }
     else if (userNumber === secretNumber) {
         document.querySelector(".game-start").textContent = "👏🏻 correct number!";
+        document.querySelector("body").style.backgroundColor =
+            "#60b347";
+        document.querySelector(".secret-number").textContent =
+            String(secretNumber);
     }
     else if (userNumber > secretNumber) {
         if (chanceLeft > 1) {
@@ -25,7 +29,8 @@ const compareUserNumber = () => {
         }
         else {
             document.querySelector(".game-start").textContent = "☹️ You lost the game";
-            document.querySelector(".chance-left").textContent = String(0);
+            document.querySelector(".chance-left").textContent =
+                String(0);
         }
     }
     else if (userNumber < secretNumber) {
@@ -37,7 +42,8 @@ const compareUserNumber = () => {
         }
         else {
             document.querySelector(".game-start").textContent = "☹️ You lost the game";
-            document.querySelector(".chance-left").textContent = String(0);
+            document.querySelector(".chance-left").textContent =
+                String(0);
         }
     }
 };
