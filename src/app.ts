@@ -9,6 +9,12 @@ let highestScore = 0;
 // generate secret number
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
+// display message
+const displayMessage = (message: string): void => {
+  (document.querySelector(".game-start")! as HTMLParagraphElement).textContent =
+    message;
+};
+
 // compare user number - function
 const compareUserNumber = () => {
   // get user number
@@ -17,15 +23,10 @@ const compareUserNumber = () => {
   ).value;
   // if user didn't enter
   if (!userNumber) {
-    (
-      document.querySelector(".game-start")! as HTMLParagraphElement
-    ).textContent = "🛑 No Number!";
-
+    displayMessage("🛑 No Number!");
     // if user is corroct
   } else if (userNumber === secretNumber) {
-    (
-      document.querySelector(".game-start")! as HTMLParagraphElement
-    ).textContent = "👏🏻 correct number!";
+    displayMessage("👏🏻 correct number");
     (document.querySelector("body")! as HTMLBodyElement).style.backgroundColor =
       "#60b347";
     (document.querySelector(".secret-number")! as HTMLSpanElement).textContent =
@@ -42,23 +43,19 @@ const compareUserNumber = () => {
     // if user is wrong
   } else if (userNumber !== secretNumber) {
     if (chanceLeft > 1) {
-      (
-        document.querySelector(".game-start")! as HTMLParagraphElement
-      ).textContent =
-        userNumber > secretNumber ? "📈 Too high!" : "📉 Too low!";
+      displayMessage(
+        userNumber > secretNumber ? "📈 Too high!" : "📉 Too low!"
+      );
       chanceLeft--;
       (document.querySelector(".chance-left")! as HTMLSpanElement).textContent =
         String(chanceLeft);
     } else {
-      (
-        document.querySelector(".game-start")! as HTMLParagraphElement
-      ).textContent = "☹️ You lost the game";
+      displayMessage("☹️ You lost the game");
       (document.querySelector(".chance-left")! as HTMLSpanElement).textContent =
         String(chanceLeft);
     }
   }
 };
-
 // reset game handler
 const resetHandler = () => {
   chanceLeft = 20;

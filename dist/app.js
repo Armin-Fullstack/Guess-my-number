@@ -8,17 +8,22 @@ let score = 0;
 let highestScore = 0;
 // generate secret number
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
+// display message
+const displayMessage = (message) => {
+    document.querySelector(".game-start").textContent =
+        message;
+};
 // compare user number - function
 const compareUserNumber = () => {
     // get user number
     const userNumber = +document.querySelector(".user-input").value;
     // if user didn't enter
     if (!userNumber) {
-        document.querySelector(".game-start").textContent = "🛑 No Number!";
+        displayMessage("🛑 No Number!");
         // if user is corroct
     }
     else if (userNumber === secretNumber) {
-        document.querySelector(".game-start").textContent = "👏🏻 correct number!";
+        displayMessage("👏🏻 correct number");
         document.querySelector("body").style.backgroundColor =
             "#60b347";
         document.querySelector(".secret-number").textContent =
@@ -34,14 +39,13 @@ const compareUserNumber = () => {
     }
     else if (userNumber !== secretNumber) {
         if (chanceLeft > 1) {
-            document.querySelector(".game-start").textContent =
-                userNumber > secretNumber ? "📈 Too high!" : "📉 Too low!";
+            displayMessage(userNumber > secretNumber ? "📈 Too high!" : "📉 Too low!");
             chanceLeft--;
             document.querySelector(".chance-left").textContent =
                 String(chanceLeft);
         }
         else {
-            document.querySelector(".game-start").textContent = "☹️ You lost the game";
+            displayMessage("☹️ You lost the game");
             document.querySelector(".chance-left").textContent =
                 String(chanceLeft);
         }
