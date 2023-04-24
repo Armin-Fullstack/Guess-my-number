@@ -15,11 +15,13 @@ const compareUserNumber = () => {
   const userNumber = +(
     document.querySelector(".user-input")! as HTMLInputElement
   ).value;
-  // check if the right number
+  // if user didn't enter
   if (!userNumber) {
     (
       document.querySelector(".game-start")! as HTMLParagraphElement
     ).textContent = "🛑 No Number!";
+
+    // if user is corroct
   } else if (userNumber === secretNumber) {
     (
       document.querySelector(".game-start")! as HTMLParagraphElement
@@ -37,28 +39,13 @@ const compareUserNumber = () => {
         document.querySelector(".highest-score")! as HTMLSpanElement
       ).textContent = String(highestScore);
     }
-  } else if (userNumber > secretNumber) {
+    // if user is wrong
+  } else if (userNumber !== secretNumber) {
     if (chanceLeft > 1) {
       (
         document.querySelector(".game-start")! as HTMLParagraphElement
-      ).textContent = "📈 Too high!";
-      console.log(chanceLeft);
-      chanceLeft--;
-      (document.querySelector(".chance-left")! as HTMLSpanElement).textContent =
-        String(chanceLeft);
-    } else {
-      (
-        document.querySelector(".game-start")! as HTMLParagraphElement
-      ).textContent = "☹️ You lost the game";
-      (document.querySelector(".chance-left")! as HTMLSpanElement).textContent =
-        String(chanceLeft);
-    }
-  } else if (userNumber < secretNumber) {
-    if (chanceLeft > 1) {
-      (
-        document.querySelector(".game-start")! as HTMLParagraphElement
-      ).textContent = "📉 Too low!";
-      console.log(chanceLeft);
+      ).textContent =
+        userNumber > secretNumber ? "📈 Too high!" : "📉 Too low!";
       chanceLeft--;
       (document.querySelector(".chance-left")! as HTMLSpanElement).textContent =
         String(chanceLeft);

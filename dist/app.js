@@ -12,9 +12,10 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 const compareUserNumber = () => {
     // get user number
     const userNumber = +document.querySelector(".user-input").value;
-    // check if the right number
+    // if user didn't enter
     if (!userNumber) {
         document.querySelector(".game-start").textContent = "🛑 No Number!";
+        // if user is corroct
     }
     else if (userNumber === secretNumber) {
         document.querySelector(".game-start").textContent = "👏🏻 correct number!";
@@ -29,25 +30,12 @@ const compareUserNumber = () => {
             highestScore = score;
             document.querySelector(".highest-score").textContent = String(highestScore);
         }
+        // if user is wrong
     }
-    else if (userNumber > secretNumber) {
+    else if (userNumber !== secretNumber) {
         if (chanceLeft > 1) {
-            document.querySelector(".game-start").textContent = "📈 Too high!";
-            console.log(chanceLeft);
-            chanceLeft--;
-            document.querySelector(".chance-left").textContent =
-                String(chanceLeft);
-        }
-        else {
-            document.querySelector(".game-start").textContent = "☹️ You lost the game";
-            document.querySelector(".chance-left").textContent =
-                String(chanceLeft);
-        }
-    }
-    else if (userNumber < secretNumber) {
-        if (chanceLeft > 1) {
-            document.querySelector(".game-start").textContent = "📉 Too low!";
-            console.log(chanceLeft);
+            document.querySelector(".game-start").textContent =
+                userNumber > secretNumber ? "📈 Too high!" : "📉 Too low!";
             chanceLeft--;
             document.querySelector(".chance-left").textContent =
                 String(chanceLeft);
